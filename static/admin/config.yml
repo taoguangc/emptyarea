@@ -10,9 +10,11 @@ collections:
     label: Blog
     folder: content/blog
     create: true
+    slug: 'index'
+    path: '{{path}}/index'
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: date }
-      - { name: title, label: Title }
-      - { name: description, label: Description }
+      - { name: path, label: "路径" }
+      - { name: date, label: "日期", widget: date }
+      - { name: title, label: "标题" }
+      - { name: description, label: "描述" }
       - { name: body, label: Body, widget: markdown }

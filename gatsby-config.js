@@ -35,6 +35,7 @@ module.exports = {
                 excerpt
                 rawBody
                 frontmatter {
+                  path
                   title
                   description
                   date(formatString: "MMMM DD, YYYY")

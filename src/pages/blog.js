@@ -25,7 +25,7 @@ class Blog extends React.Component {
           location={location}
         />
         <Link to="/">
-          <Button marginTop="85px">Go Home</Button>
+          <Button marginTop="85px">返回首页</Button>
         </Link>
       </Layout>
     )
@@ -53,6 +53,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            path
             date(formatString: "MMMM DD, YYYY")
             title
             description
