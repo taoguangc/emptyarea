@@ -14,7 +14,7 @@ collections:
     path: '{{path}}/index'
     fields:
       - { name: path, label: "路径" }
-      - { name: date, label: "日期", widget: date }
+      - { name: date, label: "日期", widget: datetime }
       - { name: title, label: "标题" }
-      - { name: description, label: "描述" }
+      - { name: description, label: "描述", required: false }
       - { name: body, label: Body, widget: markdown }
