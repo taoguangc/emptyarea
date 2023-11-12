@@ -3,9 +3,9 @@ import { PortableTextBlock } from 'sanity'
 export type Post = {
   _id: string
   _createdAt: Date
-  name: string
+  title: string
   slug: string
-  image: string
+  mainImage: string
   asset: {
     url: string
     metadata: {
@@ -17,5 +17,5 @@ export type Post = {
     }
   }
   lqip: string
-  content: PortableTextBlock[]
+  body: PortableTextBlock[]
 }
