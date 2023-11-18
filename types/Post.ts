@@ -1,5 +1,3 @@
-import { PortableTextBlock } from 'sanity'
-
 export type Post = {
   _id: string
   _createdAt: Date
@@ -17,5 +15,5 @@ export type Post = {
     }
   }
   lqip: string
-  body: PortableTextBlock[]
+  body: string
 }
