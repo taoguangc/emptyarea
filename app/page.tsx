@@ -1,7 +1,8 @@
 import { getPosts } from '@/libs/sanity'
+import { Posts } from '@/types/Posts'
 
 export default async function Home() {
-  const posts = await getPosts()
+  const posts: Posts = await getPosts()
   return (
     <div className='mx-auto container p-8'>
       <h1>博客列表</h1>
