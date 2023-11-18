@@ -12,12 +12,12 @@ export async function getPosts() {
   return posts
 }
 
-export async function createPost(post: Post) {
-  const result = client.create(post)
-  return result
-}
+// export async function createPost(post: Post) {
+//   const result = client.create(post)
+//   return result
+// }
 
-export async function updateDocumentTitle(_id, title) {
-  const result = client.patch(_id).set({ title })
-  return result
-}
+// export async function updateDocumentTitle(_id, title) {
+//   const result = client.patch(_id).set({ title })
+//   return result
+// }
