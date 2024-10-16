@@ -1,0 +1,97 @@
+{{ define "main" }}
+
+<section class="md:mt-20 w-full flex flex-col-reverse md:flex-row items-center">
+  <div class="w-full h-full sm:flex-1 md:ml-12 z-10 relative">
+    <h1 class="md:px-24 my-32 md:m-0 md:-mr-36 lg:leading-tight">We build top-notch custom web and mobile solutions</h1>
+    <a href="#mywork" aria-label="my work" class="absolute left-1/2 lg:-bottom-24 block animate-bounce w-6 h-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </a>
+  </div>
+  <div class="w-full sm:flex-1">
+    {{ with .Params.hero }} {{ $img := resources.Get . }} {{ $r := $img.Resize "960x webp q75" }}
+    <picture>
+      <source srcset="{{ $r.RelPermalink }}" type="image/webp" />
+      <img
+        src="{{ $img.RelPermalink }}"
+        width="{{ $img.Width }}"
+        height="{{ $img.Height }}"
+        class="w-full"
+        alt="Hero"
+        decoding="async"
+      />
+    </picture>
+    {{end}}
+  </div>
+</section>
+
+<section class="w-full my-48 flex flex-col items-center" id="mywork">
+  <h2 class="mx-auto my-16 uppercase">My Work</h2>
+  <div class="max-w-7xl -mx-8 flex flex-wrap">
+    {{ range first 6 (where .Site.RegularPages "Type" "work").ByDate.Reverse }}
+    <div class="p-8 sm:w-1/2">
+      <a class="text-base block duration-700 transform-gpu hover:-translate-y-4" href="{{ .Permalink }}">
+        {{ with .Params.thumb }} {{ $img := resources.Get . }} {{ $r := $img.Resize "640x webp q85" }}
+        <img
+          src="{{ $r.RelPermalink }}"
+          width="{{ $r.Width }}"
+          height="{{ $r.Height }}"
+          class="border border-gray-300 shadow-xl hover:shadow-2xl"
+          alt="work-thumb"
+          loading="lazy"
+          decoding="async"
+        />
+        {{end}}
+        <h3 class="mt-2 text-lg font-normal">{{ .Title }}</h3>
+      </a>
+    </div>
+    {{ end }}
+    <a href="/work" class="mt-24 mx-auto btn">See all work</a>
+  </div>
+</section>
+
+<section data-bg="antique">
+  <div class="max-w-7xl mx-auto px-6 py-32 px">
+    <h4 class="mb-12 uppercase">Things we do well</h4>
+    <div class="flex flex-col lg:flex-row flex-wrap">
+      <ul class="w-full lg:w-1/2 text-3xl font-extralight leading-loose">
+        <li>Wordpress</li>
+        <li>Builder</li>
+        <li>Hugo/Eleventy</li>
+        <li>Gatsby</li>
+        <li>Webpack/Snowpack</li>
+      </ul>
+      <ul class="w-full lg:w-1/2 text-3xl font-extralight leading-loose">
+        <li>Front-end Development</li>
+        <li>Web Design</li>
+        <li>UI/UX Design</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section data-bg="blue">
+  <div class="max-w-7xl mx-auto min-h-screen px-6 py-48">
+    <h4 class="uppercase">Our clients</h4>
+    <ul class="grid grid-cols-2 md:grid-cols-4 justify-items-center [&>li]:mb-8">
+      {{ with .Params.clients }} {{ range . }} {{ $img := resources.Get .image }}
+      <li>
+        <a href="{{ .url }}">
+          <img
+            src="{{ $img.Permalink }}"
+            class="radio-3-2"
+            width="120"
+            height="40"
+            alt="{{ .name }}"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      </li>
+      {{ end }}{{ end }}
+    </ul>
+  </div>
+</section>
+
+{{ end }}

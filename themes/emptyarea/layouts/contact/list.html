@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <article class="mx-auto my-48 container px-6 lg:px-16">
+    <h1 class="text-4xl font-light tracking-normal uppercase mb-24">{{ .Title }}</h1>
+    <section class="mx-auto max-w-xl">
+      <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+        <div class="mb-4 hidden">
+          <label>Don’t fill this out if you’re human: </label>
+          <input name="bot-field" />
+        </div>
+        <div class="mb-4">
+          <label>Your Name: </label>
+          <input type="text" name="name" />
+        </div>
+        <div class="mb-4">
+          <label>Your Email: </label>
+          <input type="email" name="email" />
+        </div>
+        <div class="mb-4">
+          <label>Message:</label>
+          <textarea class="h-32" name="message"></textarea>
+        </div>
+        <div class="mb-4" data-netlify-recaptcha="true"></div>
+        <div>
+          <button class="btn" type="submit">Send</button>
+        </div>
+      </form>
+    </section>
+    {{ .Content }}
+  </article>
+{{ end }}

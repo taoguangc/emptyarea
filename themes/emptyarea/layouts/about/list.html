@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <article class="mx-auto my-48 container px-6 lg:px-16">
+    <h1 class="text-4xl font-medium tracking-normal uppercase my-24">{{ .Title }}</h1>
+    <section class="flex flex-col lg:flex-row">
+      <div class="lg:w-1/2">
+        <figure>
+          <img src="{{ .Params.avatar | absURL }}" alt="Jeffrey">
+        </figure>
+      </div>
+      <div class="lg:w-1/2 mt-12 lg:mt-0 text-lg">
+        {{ .Content }}
+        <h2 class="mt-48">Services</h2>
+        <ul class="services">
+          {{ range .Params.services }}
+            <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </section>
+  </article>
+{{ end }}

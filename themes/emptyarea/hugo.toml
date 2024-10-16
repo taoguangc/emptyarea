@@ -1,0 +1,24 @@
+baseURL = 'https://emptyarea.com/'
+languageCode = 'en-US'
+title = 'emptyarea'
+copyright = 'Copyright © 2024 Powered by'
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.128.0"
