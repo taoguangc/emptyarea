@@ -1,5 +1,5 @@
-baseURL      = 'https://example.org/'
-title        = 'Tailwind CSS CLI Simple'
+baseURL      = 'https://emptyarea.com/'
+title        = 'Emptyarea'
 theme        = 'emptyarea'
 copyright    = 'Copyright © {year} Powered by '
 
@@ -28,8 +28,8 @@ weight = 4
 # default parameters
 [params]
 home = 'Home'
-logo = 'img/logo-emptyarea.svg'
-logo_light = 'img/logo-light.svg'
+logo = '/img/logo-emptyarea.svg'
+logo_light = '/img/logo-light.svg'
 # contact info
 email = 'taoguangc@gmail.com'
 address = '125/A, CA Commercial Area, California, USA'
