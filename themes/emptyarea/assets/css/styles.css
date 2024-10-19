@@ -69,4 +69,5 @@ h4 {
   @apply text-white;
 }
 
-@import 'components/markdown.css';
+@import 'menu.css';
+@import 'markdown.css';

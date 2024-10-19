@@ -1,0 +1,50 @@
+button {
+  cursor: pointer;
+}
+
+.header__toggle {
+  @apply md:hidden ml-auto w-8 h-8 relative;
+}
+
+.header__toggle .toggle--inner {
+  @apply absolute inset-y-1/2 my-auto z-50 w-8 h-[1.375rem] flex flex-col;
+}
+
+.header__toggle span {
+  width: 100%;
+  height: 0.125rem;
+  background-color: black;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.3s;
+}
+
+.header__toggle span:nth-child(2) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header__toggle--open.header__toggle span {
+  background-color: white;
+}
+.header__toggle--open.header__toggle span:nth-child(1) {
+  width: 1.75rem;
+  transform: rotate(45deg);
+  @apply origin-left;
+}
+.header__toggle--open.header__toggle span:nth-child(2) {
+  width: 0;
+}
+.header__toggle--open.header__toggle span:nth-child(3) {
+  width: 1.75rem;
+  transform: rotate(-45deg);
+  @apply origin-left;
+}
+
+.header__menu {
+  @apply block md:hidden absolute top-0 left-0 z-20 translate-x-full w-full h-screen ease-in-out duration-300 bg-black;
+}
+
+.header__menu.header__menu--open {
+  @apply -translate-x-0 flex flex-col;
+}
