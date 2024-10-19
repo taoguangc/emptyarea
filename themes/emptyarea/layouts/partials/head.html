@@ -1,5 +1,5 @@
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 {{ $t := debug.Timer "tailwindcss" }} {{ with resources.Get "css/styles.css" }} {{ $opts := dict "inlineImports" true
 "optimize" (not hugo.IsDevelopment) }} {{ with . | css.TailwindCSS $opts }} {{ if hugo.IsDevelopment }}
