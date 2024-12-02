@@ -13,10 +13,9 @@ draft: false
 ---
 
 ### Hi, I'm Jeffrey Q
+
 I'm a front end developer and UI/UX designer from China. I have been working with clients from around the globe creating bespoke websites, brands.
 
 Whether you are looking for a new website, developing your brand identity, or navigating the world of SEO, I'm here to help.
 
 Our passion is working in collaboration with our clients. To see businesses grow with creative ideas supporting their own position in the market. Whether it’s online or offline, we want you to achieve your business goals.
-
-![apple-touch-icon](E:\scripts\cms\hugo\hugowind\content\apple-touch-icon.png)

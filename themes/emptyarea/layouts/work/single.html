@@ -1,0 +1,46 @@
+{{ define "main" }}
+<article class="w-full pb-0">
+  
+  <section class="mx-auto my-24 px-6 lg:px-16 lg:max-w-7xl flex flex-col lg:flex-row lg:space-x-12">
+    <ul class="w-full lg:w-1/2">
+      <li><h1 class="text-left text-4xl font-normal tracking-normal mb-8">{{ .Title }}</h1></li>
+      <li>Date: {{ .PublishDate.Format "Jan 02, 2006" }}</li>
+      <li>Categories: {{ delimit .Params.categories ", " }}</li>
+      <li>Client: {{ .Params.client }}</li>
+      {{ with .Params.project_url }}
+      <li>URL: <a href="{{ . }}" class="underline">{{ . }}</a></li>
+      {{end}}
+    </ul>
+    <div class="w-full mt-8 lg:mt-0 lg:w-1/2">
+      {{ .Content }}
+    </div>
+  </section>
+  
+  <section class="bg-gray-100">
+    <div class="mx-auto my-24 max-w-4xl flex flex-col">
+      {{ range .Params.images }}
+        {{ $image := resources.Get .image }}
+        {{ partial "img" (dict "Site" $.Site 
+          "image" $image 
+          "attrs" (dict "class" "mt-16 border border-gray-400 shadow-xl hover:shadow-2xl" )) }}
+      {{end}}
+    </div>
+  </section>
+</article>
+<div class="fixed right-24 bottom-10 text-white flex flex-row">
+  {{ if .NextInSection }}
+  <a title="next" class="w-12 h-12 rounded-full flex justify-center items-center border border-black bg-gray-800 shadow-xl transform transition duration-500 hover:border-gray-200 hover:bg-white hover:text-black" href="{{.NextInSection.Permalink}}">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+  </a>
+  {{ end }}
+  {{ if .PrevInSection }}
+  <a title="prev" class="w-12 h-12 ml-2 rounded-full flex justify-center items-center border border-black bg-gray-800 shadow-xl transform transition duration-500 hover:border-gray-200 hover:bg-white hover:text-black" href="{{.PrevInSection.Permalink}}">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+  </a>
+  {{ end }}
+</div>
+{{ end }}

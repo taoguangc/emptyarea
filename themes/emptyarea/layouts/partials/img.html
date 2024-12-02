@@ -1,0 +1,23 @@
+{{ $image := .image }}
+
+{{ $imgSrc := "" }}
+{{ $imgSrcSet := slice }}
+
+{{ $widths := $.Site.Params.imageWidths }}
+
+{{ range $widths }}
+  {{ if ge $image.Width . -}}
+    {{ $srcUrl := (printf "%dx" . | $image.Resize ).RelPermalink }}
+    {{ if eq $imgSrc "" }}{{ $imgSrc = $srcUrl }}{{ end }}
+	  {{ $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
+  {{ end -}}
+{{ end }}
+{{ $imgSrcSet = (delimit $imgSrcSet ",") }}
+
+{{ $attributes := slice }}
+{{ range $name, $value := .attrs }}
+  {{ $attributes = $attributes | append (printf "%s=%q" $name $value) }}
+{{ end }}
+{{ $attributes = (delimit $attributes " ") }}
+
+<img srcset="{{ $imgSrcSet }}" src="{{ $imgSrc }}" width="{{ $image.Width }}" height="{{ $image.Height }}" {{ print $attributes | safeHTMLAttr }} loading="lazy" decoding="async">

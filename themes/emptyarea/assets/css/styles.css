@@ -17,10 +17,6 @@ html.lenis body {
   height: auto;
 }
 
-/* .lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-} */
-
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
@@ -67,6 +63,43 @@ h4 {
 
 .bg-black footer figure svg {
   @apply text-white;
+}
+
+article h1 {
+  @apply text-4xl font-medium tracking-normal mb-24;
+}
+
+article p {
+  @apply mb-3;
+}
+
+article label {
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+article input,
+article textarea {
+  width: 100%;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-color: #ccc;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+ul.services li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-repeat: no-repeat;
+  padding-left: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  background-image: url(../../img/arrow-right.svg);
+  background-size: auto 25%;
+  background-position: 0;
 }
 
 @import 'menu.css';

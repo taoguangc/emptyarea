@@ -15,6 +15,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   })
 })
 
+// To Top
+const toTop = document.querySelector('#totop')
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight) {
+    toTop.style.visibility = 'visible'
+  } else {
+    toTop.style.visibility = 'hidden'
+  }
+})
+
+// Toggle Menu
 const headerToggle = document.querySelector('.header__toggle')
 const headerMenu = document.querySelector('.header__menu')
 if (headerToggle && headerMenu) {

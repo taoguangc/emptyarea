@@ -7,7 +7,7 @@ thumb: /img/work/colmo-thumb.webp
 images:
   - image: /img/work/vv3c-1.jpg
 client: VV3C
-project_url: http://vv3c.com/
+project_url: null
 qr_code: /img/work/nespresso-thumb.webp
 categories:
   - Design

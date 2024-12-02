@@ -1,74 +1,54 @@
-{{ if .IsHome }}
-<footer class="w-full" data-bg="black">
-  {{ else }}
-  <footer class="w-full bg-black">
-    {{ end }}
-    <div class="max-w-7xl mx-auto p-12">
-      <figure class="flex items-center">
-        <a href="{{ site.BaseURL }}">
-          <svg
-            width="60"
-            height="45"
-            viewBox="0 0 60 45"
+<footer class="w-full bg-black h-screen">
+  <div class="max-w-7xl mx-auto p-12 flex flex-col md:flex-row items-center">
+    <figure class="pt-32 md:pt-0">
+      <a href="{{ site.BaseURL }}">
+        <svg
+          width="60"
+          height="45"
+          viewBox="0 0 60 45"
+          fill="none"
+          class="text-white"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M7.5 0H60L52.5 15H52.0639C51.1738 12.8011 49.018 11.25 46.5 11.25H13.5C10.1863 11.25 7.5 13.9363 7.5 17.25V22V27.75C7.5 31.0637 10.1863 33.75 13.5 33.75H46.5C49.018 33.75 51.1738 32.1989 52.0639 30H52.5L60 45H7.5H0V0H7.5Z"
             fill="none"
-            class="{{ if .IsHome }}text-black{{ else }}text-white{{ end }}"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M7.5 0H60L52.5 15H52.0639C51.1738 12.8011 49.018 11.25 46.5 11.25H13.5C10.1863 11.25 7.5 13.9363 7.5 17.25V22V27.75C7.5 31.0637 10.1863 33.75 13.5 33.75H46.5C49.018 33.75 51.1738 32.1989 52.0639 30H52.5L60 45H7.5H0V0H7.5Z"
-              fill="none"
-              class="fill-current"
-            />
-            <rect x="13" y="16" width="33" height="12" rx="3" fill="none" class="fill-current" />
-          </svg>
-        </a>
-        <figcaption class="hidden">emptyarea.com</figcaption>
-      </figure>
-      <p
-        class="mx-auto max-w-2xl py-48 text-gray-300 text-2xl lg:text-4xl font-extralight leading-relaxed lg:leading-relaxed z-10"
-      >
-        If you want a great-to-work-with developer to help create websites people really enjoy,
-        <a class="underline" href="/contact/">get in touch.</a>
-      </p>
-      <small class="text-white">
-        {{ replace .Site.Copyright "{year}" now.Year }}
-        <a href="{{ .Site.BaseURL }}" target="_blank" rel="noopener" class="underline">{{ .Site.Params.author }}</a>
-        •
-      </small>
-      <small class="block text-white"
-        ><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16004141号-3</a></small
-      >
-    </div>
-  </footer>
+            class="fill-current"
+          ></path>
+          <rect x="13" y="16" width="33" height="12" rx="3" fill="none" class="fill-current"></rect>
+        </svg>
+      </a>
+      <figcaption class="hidden">emptyarea.com</figcaption>
+    </figure>
+
+    <p class="mx-auto max-w-2xl py-24 md:py-48 text-gray-300 text-2xl md:text-4xl font-extralight leading-relaxed">
+      If you want a great-to-work-with developer to help create websites people really enjoy,
+      <a class="underline" href="/contact/">get in touch.</a>
+    </p>
+  </div>
+  <div class="max-w-7xl mx-auto p-12 flex flex-col items-start md:items-center">
+    <small class="text-white mb-2">
+      {{ replace .Site.Copyright "{year}" now.Year }}
+      <a href="{{ .Site.BaseURL }}" target="_blank" rel="noopener" class="underline">{{ .Site.Params.author }}</a>
+      •
+    </small>
+    <small class="block text-white"><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备16004141号-3</a></small>
+  </div>
   <a
+    id="totop"
     href="#header"
-    class="fixed w-12 h-12 bottom-10 right-10 text-white border border-black bg-gray-800 shadow-xl rounded-full flex justify-center items-center transform transition duration-500 hover:border-gray-200 hover:bg-white hover:text-black"
+    class="invisible fixed w-12 h-12 bottom-10 right-10 text-white border border-black bg-gray-800 shadow-xl rounded-full flex justify-center items-center transform transition duration-500 hover:border-gray-200 hover:bg-white hover:text-black"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
     </svg>
   </a>
-
-  {{- $appJS := resources.Get "js/app.js" }} {{- $customJS := resources.Get "js/custom.js" }} {{- $slice := slice
-  $appJS}} {{- if $customJS }} {{- $slice = $slice | append $customJS }} {{- end }} {{- $bundleJS := $slice |
-  resources.Concat "js/bundle.js" | js.Build (dict "minify" true "target" "es2017") }} {{- $bundleJS = printf "%s?v=%d"
-  $bundleJS.RelPermalink now.Unix }}
-  <script src="{{ $bundleJS | safeHTML }}"></script>
-  <script>
-    {{ if .IsHome }}
-    const sections = [...document.getElementsByTagName("section"), document.getElementsByTagName("footer")[0]]
-    window.addEventListener("scroll", function () {
-      const scrollFromTop = window.pageYOffset
-      for (let i = 0; sections.length > i; i++) {
-        const half = window.innerHeight / 2
-        if (scrollFromTop < sections[i].offsetTop + half) {
-          document.body.className = "bg-" + sections[i].getAttribute("data-bg")
-          break
-        }
-      }
-    })
-    {{ end }}
-  </script>
 </footer>
+
+{{- $appJS := resources.Get "js/app.js" }} {{- $customJS := resources.Get "js/custom.js" }} {{- $slice := slice $appJS}}
+{{- if $customJS }} {{- $slice = $slice | append $customJS }} {{- end }} {{- $bundleJS := $slice | resources.Concat
+"js/bundle.js" | js.Build (dict "minify" true "target" "es2017") }} {{- $bundleJS = printf "%s?v=%d"
+$bundleJS.RelPermalink now.Unix }}
+<script src="{{ $bundleJS | safeHTML }}"></script>

@@ -2,8 +2,12 @@
 
 <section class="md:mt-20 w-full flex flex-col-reverse md:flex-row items-center">
   <div class="w-full h-full sm:flex-1 md:ml-12 z-10 relative">
-    <h1 class="md:px-24 my-32 md:m-0 md:-mr-36 lg:leading-tight">We build top-notch custom web and mobile solutions</h1>
-    <a href="#mywork" aria-label="my work" class="absolute left-1/2 lg:-bottom-24 block animate-bounce w-6 h-6">
+    <h1 class="md:px-24 my-32 md:m-0 md:-mr-36 md:leading-tight">We build top-notch custom web and mobile solutions</h1>
+    <a
+      href="#mywork"
+      aria-label="my work"
+      class="absolute left-1/2 -bottom-28 md:-bottom-24 block animate-bounce w-6 h-6"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
@@ -28,7 +32,7 @@
 
 <section class="w-full my-48 flex flex-col items-center" id="mywork">
   <h2 class="mx-auto my-16 uppercase">My Work</h2>
-  <div class="max-w-7xl -mx-8 flex flex-wrap">
+  <div class="max-w-7xl md:-mx-8 flex flex-wrap">
     {{ range first 6 (where .Site.RegularPages "Type" "work").ByDate.Reverse }}
     <div class="p-8 sm:w-1/2">
       <a class="text-base block duration-700 transform-gpu hover:-translate-y-4" href="{{ .Permalink }}">
@@ -72,7 +76,7 @@
 </section>
 
 <section data-bg="blue">
-  <div class="max-w-7xl mx-auto min-h-screen px-6 py-48">
+  <div class="max-w-7xl mx-auto min-h-screen px-6 py-24 md:py-48">
     <h4 class="uppercase">Our clients</h4>
     <ul class="grid grid-cols-2 md:grid-cols-4 justify-items-center [&>li]:mb-8">
       {{ with .Params.clients }} {{ range . }} {{ $img := resources.Get .image }}

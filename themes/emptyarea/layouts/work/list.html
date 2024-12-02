@@ -1,7 +1,7 @@
 {{ define "main" }}
 
-<article class="my-48 mx-auto container px-8">
-  <h1 class="text-4xl font-medium tracking-normal uppercase mb-24">{{ .Params.title }}</h1>
+<article class="my-48 mx-auto max-w-7xl px-8">
+  <h1 class="text-4xl font-medium tracking-normal mb-24">{{ .Params.title }}</h1>
   <div class="flex flex-wrap items-center -mx-8">
     {{ range (where $.Site.RegularPages "Type" "work").ByDate.Reverse }}
     <div class="p-8 sm:w-1/2">
